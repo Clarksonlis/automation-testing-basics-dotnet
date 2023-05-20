@@ -18,8 +18,14 @@ namespace EpamApp1
         private static int GetMaxConsecutiveUnequalChars(string input)
         {
             char[] inputArray = input.ToCharArray();
+
+            if (inputArray.Length == 0)
+            {
+                return 0; 
+            }
+
             int currentNumber = 1;
-            int maxNumber = 0;
+            int maxNumber = 1;
             int startIndex = 0;
 
             for (int i = 1; i < inputArray.Length; i++)
