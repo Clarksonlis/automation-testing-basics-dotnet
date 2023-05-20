@@ -4,24 +4,20 @@ namespace Interfaces_Abstract_Classes_Task
 {
     public class Bird : IFlyable
     {
+        private Coordinate currentPosition;
 
-        //поля
-        Coordinate currentPosition;
-
-        //конструктор
+        // Constructor
         public Bird()
         {
         }
 
-        //свойства
-
-        //методы
-
+        // Sets the current position of the bird to the specified coordinate
         public void FlyTo(Coordinate coordinate)
         {
             currentPosition = coordinate;
         }
 
+        // Calculates and returns the flying time to reach the specified coordinate
         public double GetFlyTime(Coordinate coordinate)
         {
             double speed = GetSpeed();
@@ -37,6 +33,7 @@ namespace Interfaces_Abstract_Classes_Task
             return flyTime;
         }
 
+        // Generates a random speed for the bird
         private double GetSpeed()
         {
             Random random = new Random();
@@ -45,6 +42,7 @@ namespace Interfaces_Abstract_Classes_Task
             return speed;
         }
 
+        // Validates that the speed is within acceptable limits
         private void ValidateSpeed(double speed)
         {
             if (speed < 0)
@@ -58,6 +56,7 @@ namespace Interfaces_Abstract_Classes_Task
             }
         }
 
+        // Validates that the distance is non-negative
         private void ValidateDistance(double distance)
         {
             if (distance < 0)

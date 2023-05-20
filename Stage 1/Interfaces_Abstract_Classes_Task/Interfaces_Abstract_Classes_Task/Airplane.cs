@@ -4,23 +4,20 @@ namespace Interfaces_Abstract_Classes_Task
 {
     public class Airplane : IFlyable
     {
-        //поля
-        Coordinate currentPosition;
+        private Coordinate currentPosition;
 
-        //конструктор
+        // Constructor
         public Airplane()
         {
         }
 
-        //свойства
-
-        //методы
-
+        // Sets the current position of the airplane to the specified coordinate
         public void FlyTo(Coordinate coordinate)
         {
             currentPosition = coordinate;
         }
 
+        // Calculates and returns the flying time to reach the specified coordinate
         public double GetFlyTime(Coordinate coordinate)
         {
             double distance = currentPosition.DistanceTo(coordinate);
@@ -34,6 +31,7 @@ namespace Interfaces_Abstract_Classes_Task
             return flyTime;
         }
 
+        // Calculates the speed based on the distance traveled
         private double GetSpeed(double distance)
         {
             double speed = 200;
@@ -51,6 +49,7 @@ namespace Interfaces_Abstract_Classes_Task
             return result;
         }
 
+        // Validates that the speed is within acceptable limits
         private void ValidateSpeed(double speed)
         {
             if (speed < 0)
@@ -60,10 +59,11 @@ namespace Interfaces_Abstract_Classes_Task
 
             if (speed > 500)
             {
-                throw new Exception("Speed is too dangeouros for an airplan!");
+                throw new Exception("Speed is too dangerous for an airplane!");
             }
         }
 
+        // Validates that the distance is non-negative
         private void ValidateDistance(double distance)
         {
             if (distance < 0)
@@ -72,5 +72,4 @@ namespace Interfaces_Abstract_Classes_Task
             }
         }
     }
-    
 }

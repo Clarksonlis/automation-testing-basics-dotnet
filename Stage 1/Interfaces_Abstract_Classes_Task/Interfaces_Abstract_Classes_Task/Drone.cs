@@ -2,24 +2,22 @@
 
 namespace Interfaces_Abstract_Classes_Task
 {
-	public class Drone : IFlyable
+    public class Drone : IFlyable
     {
-        //поля
-        Coordinate currentPosition;
+        private Coordinate currentPosition;
 
-		//конструктор
+        // Constructor
         public Drone()
-		{
-		}
+        {
+        }
 
-        //свойства
-
-        //методы
+        // Sets the current position of the drone to the specified coordinate
         public void FlyTo(Coordinate coordinate)
         {
             currentPosition = coordinate;
         }
 
+        // Calculates and returns the flying time to reach the specified coordinate, considering hovering time
         public double GetFlyTime(Coordinate coordinate)
         {
             double distance = currentPosition.DistanceTo(coordinate);
@@ -40,6 +38,7 @@ namespace Interfaces_Abstract_Classes_Task
             return flyTimeWithHover;
         }
 
+        // Generates a random speed for the drone
         private double GetSpeed()
         {
             Random random = new Random();
@@ -48,6 +47,7 @@ namespace Interfaces_Abstract_Classes_Task
             return speed;
         }
 
+        // Validates that the speed is non-negative
         private void ValidateSpeed(double speed)
         {
             if (speed < 0)
@@ -56,6 +56,7 @@ namespace Interfaces_Abstract_Classes_Task
             }
         }
 
+        // Validates that the distance is non-negative and within the drone's capabilities
         private void ValidateDistance(double distance)
         {
             if (distance < 0)
@@ -65,7 +66,7 @@ namespace Interfaces_Abstract_Classes_Task
 
             if (distance > 1000)
             {
-                throw new Exception("Distance is too long to fly for a dron!");
+                throw new Exception("Distance is too long to fly for a drone!");
             }
         }
     }

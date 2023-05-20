@@ -2,17 +2,18 @@
 
 namespace Interfaces_Abstract_Classes_Task
 {
-	public struct Coordinate
-	{
-		public double X { get; set; }
+    public struct Coordinate
+    {
+        public double X { get; set; }
         public double Y { get; set; }
         public double Z { get; set; }
 
+        // Calculates the distance to the specified coordinate using Euclidean distance formula
         public double DistanceTo(Coordinate coordinate)
         {
-            double  newX = coordinate.X - this.X;
-            double  newY = coordinate.Y - this.Y;
-            double  newZ = coordinate.Z - this.Z;
+            double newX = coordinate.X - this.X;
+            double newY = coordinate.Y - this.Y;
+            double newZ = coordinate.Z - this.Z;
 
             newX *= newX;
             newY *= newY;
