@@ -12,9 +12,9 @@ namespace EpamApp1
             int maxConsecutiveUnequalChars = GetMaxConsecutiveUnequalChars(input);
 
             Console.WriteLine($"The maximum number of unequal consecutive characters is: {maxConsecutiveUnequalChars}");
-
         }
 
+        // Method to calculate the maximum number of consecutive unequal characters
         private static int GetMaxConsecutiveUnequalChars(string input)
         {
             char[] inputArray = input.ToCharArray();
@@ -26,7 +26,7 @@ namespace EpamApp1
             {
                 for (int j = i - 1; j >= startIndex; j--)
                 {
-
+                    // If a repeating character is found, update the maximum count and reset the current count
                     if (inputArray[j] == inputArray[i])
                     {
                         maxNumber = currentNumber > maxNumber ? currentNumber : maxNumber;
