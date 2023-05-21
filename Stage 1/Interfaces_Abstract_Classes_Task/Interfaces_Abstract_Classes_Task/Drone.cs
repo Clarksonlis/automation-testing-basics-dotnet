@@ -29,7 +29,7 @@ namespace Interfaces_Abstract_Classes_Task
             double flyTime = distance / speed;
             double flyTimeWithHover = flyTime;
 
-            while (flyTime > 10)
+            while (flyTime >= 10)
             {
                 flyTime -= 10;
                 flyTimeWithHover++;

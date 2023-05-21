@@ -32,19 +32,20 @@ namespace Interfaces_Abstract_Classes_Task
         }
 
         // Calculates the speed based on the distance traveled
-        private double GetSpeed(double distance)
+        public double GetSpeed(double distance)
         {
-            double speed = 200;
-            int iterations = 0;
+            double startSpeed = 200; // Initial startSpeed of the airplane
+            double avgSpeed = startSpeed; // Initial avgSpeed of the airplane
+            int iterations = 1;
 
-            while (distance > 10)
+            while (distance >= 10)
             {
                 distance -= 10;
-                speed += 10;
+                avgSpeed = avgSpeed + startSpeed + (10 * iterations);
                 iterations++;
             }
 
-            double result = speed / iterations;
+            double result = avgSpeed / iterations; // Average speed over the distance
 
             return result;
         }
