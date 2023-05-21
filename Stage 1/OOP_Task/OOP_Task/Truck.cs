@@ -12,10 +12,10 @@ namespace OOP_Task
             transmission = new Transmission("MT", 10, "Eaton Corporation plc");
         }
 
-        public override void characteristic()
+        public override void Characteristic()
         {
             Console.WriteLine("Truck: ");
-            base.characteristic();
+            base.Characteristic();
         }
     }
 }

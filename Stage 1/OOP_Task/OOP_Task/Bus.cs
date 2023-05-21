@@ -12,10 +12,10 @@ namespace OOP_Task
             transmission = new Transmission("ATS", 5, "Allison Transmission");
         }
 
-        public override void characteristic()
+        public override void Characteristic()
         {
             Console.WriteLine("Bus: ");
-            base.characteristic();
+            base.Characteristic();
         }
     }
 }

@@ -12,10 +12,10 @@ namespace OOP_Task
             transmission = new Transmission("CVT", 1, "Tarushi Tech Private Limited");
         }
 
-        public override void characteristic()
+        public override void Characteristic()
         {
             Console.WriteLine("Scooter: ");
-            base.characteristic();
+            base.Characteristic();
         }
     }
 }

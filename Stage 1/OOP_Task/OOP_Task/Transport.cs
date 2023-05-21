@@ -2,7 +2,7 @@
 
 namespace OOP_Task
 {
-    public class Transport
+    public abstract class Transport
     {
         // Engine instance
         public Engine engine;
@@ -12,7 +12,7 @@ namespace OOP_Task
         public Transmission transmission;
 
         // Output complete information about the transport
-        public virtual void characteristic()
+        public virtual void Characteristic()
         {
             Console.WriteLine($"\n" +
                $"Engine: power = {engine.power}, volume = {engine.volume}, type = {engine.type}, serial number = {engine.serialNumber} \n" +

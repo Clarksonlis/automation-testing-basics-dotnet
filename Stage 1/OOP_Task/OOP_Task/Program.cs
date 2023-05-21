@@ -11,9 +11,9 @@ class Program
         Transport myScooter = new Scooter();
 
         // Output complete information about the objects
-        myPassengerCar.characteristic();
-        myTruck.characteristic();
-        myBus.characteristic();
-        myScooter.characteristic();
+        myPassengerCar.Characteristic();
+        myTruck.Characteristic();
+        myBus.Characteristic();
+        myScooter.Characteristic();
     }
 }

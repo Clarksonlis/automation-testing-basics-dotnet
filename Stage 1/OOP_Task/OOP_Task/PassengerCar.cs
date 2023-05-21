@@ -12,10 +12,10 @@ namespace OOP_Task
             transmission = new Transmission("AMT", 6, "American Axle & Manufacturing Holdings");
         }
 
-        public override void characteristic()
+        public override void Characteristic()
         {
             Console.WriteLine("Passenger car: ");
-            base.characteristic();
+            base.Characteristic();
         }
     }
 }
