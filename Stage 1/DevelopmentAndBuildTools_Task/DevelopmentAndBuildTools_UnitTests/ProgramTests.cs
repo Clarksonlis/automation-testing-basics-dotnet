@@ -9,14 +9,16 @@ public class Tests
     {
     }
 
-    [TestCase("", 0)]
-    [TestCase(" ", 1)]
-    [TestCase("abc", 3)]
-    [TestCase("abcd", 4)]
-    [TestCase("AabB", 4)]
-    public void GetMaxConsecutiveUnequalChars_StringInput_CharactersLength(string input, int expectedResult)
+
+    [TestCase("", "")]
+    [TestCase(" ", " ")]
+    [TestCase("abc", "abc")]
+    [TestCase("abcb", "abc")]
+    [TestCase("AabB", "AabB")]
+    [TestCase("AbCklOAklfjsp", "Aklfjsp")]
+    public void Test1(string input, string expectedResult)
     {
-        int result = Program.GetMaxConsecutiveUnequalChars(input);
+        string result = Program.GetMaxConsecutiveUnequalChars(input);
 
         Assert.AreEqual(expectedResult, result);
     }
