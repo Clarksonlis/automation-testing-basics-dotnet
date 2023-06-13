@@ -17,7 +17,11 @@ namespace Unit_test_frameworks_Task.Algorithms
 
             foreach (char currentChar in _input)
             {
-                if (char.IsDigit(currentChar))
+                if (!char.IsDigit(currentChar))
+                {
+                    currentNumber = 0;
+                }
+                else
                 {
                     if (currentChar == previousChar)
                     {
@@ -30,7 +34,7 @@ namespace Unit_test_frameworks_Task.Algorithms
                     }
 
                     maxNumber = Math.Max(maxNumber, currentNumber);
-                }
+                } 
             }
 
             return maxNumber.ToString();

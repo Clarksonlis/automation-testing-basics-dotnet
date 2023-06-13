@@ -5,13 +5,17 @@ namespace EpamApp1.Tests
 {
     public class ProgramTests
     {
-        [TestCase("abbccdefggg", ExpectedResult = "cdefg")]
-        [TestCase("abccdefg", ExpectedResult = "cdefg")]
-        [TestCase("a", ExpectedResult = "a")]
-        [TestCase("ab", ExpectedResult = "ab")]
-        [TestCase("abc", ExpectedResult = "abc")]
+        [TestCase("1abbccdefgggg222", ExpectedResult = "cdefg")]
+        [TestCase("abcccCDefG222", ExpectedResult = "cCDefG2")]
+        [TestCase("AAAaaA222a2", ExpectedResult = "aA2")]
+        [TestCase("ABC", ExpectedResult = "ABC")]
+        [TestCase("A2", ExpectedResult = "A2")]
+        [TestCase("abcc", ExpectedResult = "abc")]
+        [TestCase("1234566", ExpectedResult = "123456")]
         [TestCase("", ExpectedResult = "")]
         [TestCase(" ", ExpectedResult = " ")]
+        [TestCase(".", ExpectedResult = ".")]
+
         public string GetMaxConsecutiveUnequalChars_ShouldReturnMaxConsecutiveUnequalChars(string input)
         {
             // Arrange
@@ -24,13 +28,16 @@ namespace EpamApp1.Tests
             return result;
         }
 
-        [TestCase("aBbcCcDdefgggg", ExpectedResult = 4)]
-        [TestCase("abcccCDefG", ExpectedResult = 3)]
-        [TestCase("AbbB", ExpectedResult = 2)]
-        [TestCase("ABb", ExpectedResult = 1)]
-        [TestCase("A", ExpectedResult = 1)]
+        [TestCase("1abbccdefgggg222", ExpectedResult = 4)]
+        [TestCase("abcccCDefG222", ExpectedResult = 3)]
+        [TestCase("AAAaaA222aa2", ExpectedResult = 3)]
+        [TestCase("ABC", ExpectedResult = 1)]
+        [TestCase("A2", ExpectedResult = 1)]
+        [TestCase("abcc", ExpectedResult = 2)]
+        [TestCase("1234566", ExpectedResult = 0)]
         [TestCase("", ExpectedResult = 0)]
         [TestCase(" ", ExpectedResult = 0)]
+        [TestCase(".", ExpectedResult = 0)]
         public int GetMaxConsecutiveLatinChars_ShouldReturnMaxConsecutiveLatinChars(string input)
         {
             // Arrange
@@ -43,14 +50,16 @@ namespace EpamApp1.Tests
             return int.Parse(result);
         }
 
-        [TestCase("12234445", ExpectedResult = 3)]
-        [TestCase("111", ExpectedResult = 3)]
-        [TestCase("11111", ExpectedResult = 5)]
-        [TestCase("0123456789", ExpectedResult = 1)]
-        [TestCase("1", ExpectedResult = 1)]
-        [TestCase("a", ExpectedResult = 0)]
+        [TestCase("1abbccdefgggg222", ExpectedResult = 3)]
+        [TestCase("abcccCDefG222", ExpectedResult = 3)]
+        [TestCase("AAAaaA222aa2", ExpectedResult = 3)]
+        [TestCase("ABC", ExpectedResult = 0)]
+        [TestCase("A2", ExpectedResult = 1)]
+        [TestCase("abcc", ExpectedResult = 0)]
+        [TestCase("1234566", ExpectedResult = 2)]
         [TestCase("", ExpectedResult = 0)]
         [TestCase(" ", ExpectedResult = 0)]
+        [TestCase(".", ExpectedResult = 0)]
         public int GetMaxConsecutiveDigits_ShouldReturnMaxConsecutiveDigits(string input)
         {
             // Arrange
