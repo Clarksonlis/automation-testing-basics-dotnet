@@ -2,7 +2,8 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using Tests;
+using WebDriverTaskTests;
+using WebDriverTaskTests.Pages;
 
 [TestFixture]
 public class MailBoxTests
@@ -17,8 +18,7 @@ public class MailBoxTests
     public void Setup()
     {
         // Инициализация веб-драйвера : Chrome
-        string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-        driver = new ChromeDriver(path + @"\drivers\");
+        driver = new ChromeDriver();
         driver.Manage().Window.Maximize();
         this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(100));
 

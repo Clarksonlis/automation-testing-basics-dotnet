@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
+namespace WebDriverTaskTests.Pages;
+
 public class LoginPage
 {
     private IWebDriver driver;

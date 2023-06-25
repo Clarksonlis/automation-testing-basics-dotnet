@@ -1,4 +1,4 @@
-﻿namespace Tests
+﻿namespace WebDriverTaskTests
 {
     public static class Constants
     {

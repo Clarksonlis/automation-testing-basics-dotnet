@@ -1,7 +1,9 @@
 ﻿using OpenQA.Selenium;
 using Bogus;
 using OpenQA.Selenium.Support.UI;
-using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
+using SeleniumExtras.WaitHelpers;
+
+namespace WebDriverTaskTests.Pages;
 
 public class MailboxPage
 {

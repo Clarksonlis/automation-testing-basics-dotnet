@@ -1,7 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Bogus;
-using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
+using SeleniumExtras.WaitHelpers;
+
+namespace WebDriverTaskTests.Pages;
 
 public class UserProfilePage
 {

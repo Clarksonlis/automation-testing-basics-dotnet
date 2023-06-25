@@ -2,7 +2,8 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using Tests;
+using WebDriverTaskTests;
+using WebDriverTaskTests.Pages;
 
 [TestFixture]
 public class LoginPageTests
@@ -15,8 +16,7 @@ public class LoginPageTests
     public void Setup()
     {
         // Инициализация веб-драйвера : Chrome
-        string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-        driver = new ChromeDriver(path + @"\drivers\");
+        driver = new ChromeDriver();
         driver.Manage().Window.Maximize();
         wait = new WebDriverWait(driver, TimeSpan.FromSeconds(100));
 
@@ -44,26 +44,16 @@ public class LoginPageTests
     }
 
     [Test]
-    public void TestLoginWithIncorrectCredentials()
+    [TestCase("DaryadaryaEpamTestt")]
+    [TestCase("")]
+    public void TestLoginWithIncorrectCredentials(string login)
     {
         // Вход в почту Яндекс с неправильными логином и паролем
         driver.Navigate().GoToUrl(Constants.BaseUrlYandex);
 
-        loginPage.LoginUserNameYandex("DaryadaryaEpamTestt");
+        loginPage.LoginUserNameYandex(login);
 
         //Проверка для невозможности входа входа
         Assert.IsTrue(loginPage.IsHintMessageDisplayedYandex(), "Error message must be displayed.");
-    }
-
-    [Test]
-    public void TestLoginWithEmptyCredentials()
-    {
-        // Вход в почту Яндекс с пустым логином
-        driver.Navigate().GoToUrl(Constants.BaseUrlYandex);
-
-        loginPage.LoginUserNameYandex("");
-
-        //Проверка для невозможности входа входа
-        Assert.IsTrue(loginPage.IsHintMessageDisplayedYandex(), "Error message must be displayed");
     }
 }

@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1705.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriverTask", "WebDriverTask\WebDriverTask.csproj", "{77ECDCB4-E3B9-4933-BA7E-28D12B27C722}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{FACCE2DA-8E6E-4FB2-B1CD-55FB8E5D75FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriverTaskTests", "Tests\WebDriverTaskTests.csproj", "{FACCE2DA-8E6E-4FB2-B1CD-55FB8E5D75FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{77ECDCB4-E3B9-4933-BA7E-28D12B27C722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77ECDCB4-E3B9-4933-BA7E-28D12B27C722}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77ECDCB4-E3B9-4933-BA7E-28D12B27C722}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77ECDCB4-E3B9-4933-BA7E-28D12B27C722}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FACCE2DA-8E6E-4FB2-B1CD-55FB8E5D75FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FACCE2DA-8E6E-4FB2-B1CD-55FB8E5D75FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FACCE2DA-8E6E-4FB2-B1CD-55FB8E5D75FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
