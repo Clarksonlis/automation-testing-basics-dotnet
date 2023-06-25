@@ -18,56 +18,57 @@ public class MailboxPage
     }
 
     // Определение элементов страницы почтового ящика : Яндекс 
-    private IWebElement composeButtonYandex => driver.FindElement(By.CssSelector("a.Button2[href=\"#compose\"]"));
-    private IWebElement recipientInputYandex => driver.FindElement(By.CssSelector("div#compose-field-1[title='Кому'][aria-label='Кому']"));
-    private IWebElement randomEmailInputYandex => driver.FindElement(By.CssSelector("div#cke_1_contents [aria-label=\"Напишите что-нибудь\"][title=\"Напишите что-нибудь\"]"));
-    private IWebElement sendButtonYandex => driver.FindElement(By.CssSelector("div.ComposeControlPanel-Part > div.new__root--3qgLa > button.Button2_view_action"));
+    private IWebElement ComposeButtonYandex => driver.FindElement(By.CssSelector("a.Button2[href=\"#compose\"]"));
+    private IWebElement RecipientInputYandex => driver.FindElement(By.CssSelector("div#compose-field-1[title='Кому'][aria-label='Кому']"));
+    private IWebElement RandomEmailInputYandex => driver.FindElement(By.CssSelector("div#cke_1_contents [aria-label=\"Напишите что-нибудь\"][title=\"Напишите что-нибудь\"]"));
+    private IWebElement SendButtonYandex => driver.FindElement(By.CssSelector("div.ComposeControlPanel-Part > div.new__root--3qgLa > button.Button2_view_action"));
 
     // Определение элементов страницы почтового ящика  : Google
-    private IWebElement inboxEmailsGoogle => driver.FindElement(By.CssSelector("a[aria-label*='Входящие']"));
-    private IWebElement newEmailGoogle => driver.FindElement(By.CssSelector("tr.zA.zE:first-child"));
-    private IWebElement newEmailSenderGoogle => driver.FindElement(By.CssSelector("tr.zA.zE:first-child span[email='daryadaryaepamtest@yandex.ru']"));
-    private IWebElement labelNewGoogle => driver.FindElement(By.XPath("//div[contains(text(), 'Новое')]"));
-    private IWebElement emailContentGoogle => driver.FindElement(By.CssSelector("div.a3s.aiL > div:not(.yj6qo):not(.adL):not(:empty)"));
-    private IWebElement replyButtonGoogle => driver.FindElement(By.CssSelector("div[aria-label='Ответить']"));
-    private IWebElement responseEmailInputGoogle => driver.FindElement(By.CssSelector("div[aria-label='Текст письма']"));
-    private IWebElement sendButtonGoogle => driver.FindElement(By.CssSelector("div[id^=':'][aria-label^='Отправить']"));
+    private IWebElement InboxEmailsGoogle => driver.FindElement(By.CssSelector("a[aria-label*='Входящие']"));
+    private IWebElement NewEmailGoogle => driver.FindElement(By.CssSelector("tr.zA.zE:first-child"));
+    private IWebElement NewEmailSenderGoogle => driver.FindElement(By.CssSelector("tr.zA.zE:first-child span[email='daryadaryaepamtest@yandex.ru']"));
+    private IWebElement LabelNewGoogle => driver.FindElement(By.XPath("//div[contains(text(), 'Новое')]"));
+    private IWebElement EmailContentGoogle => driver.FindElement(By.CssSelector("div.a3s.aiL > div:not(.yj6qo):not(.adL):not(:empty)"));
+    private IWebElement ReplyButtonGoogle => driver.FindElement(By.CssSelector("div[aria-label='Ответить']"));
+    private IWebElement ResponseEmailInputGoogle => driver.FindElement(By.CssSelector("div[aria-label='Текст письма']"));
+    private IWebElement SendButtonGoogle => driver.FindElement(By.CssSelector("div[id^=':'][aria-label^='Отправить']"));
+    private IWebElement EmailIsSentGoogle => driver.FindElement(By.CssSelector("div.vh > span.aT > span.bAq"));
 
     public void SubmitNewEmailYandex()
     {
         // Нажатие кнопки "Написать письмо" : Яндекс 
-        composeButtonYandex.Click();
+        ComposeButtonYandex.Click();
     }
 
     public void ComposeNewEmailYandex(string recipient)
     {
-        this.wait.Until(driver => driver.FindElement(By.CssSelector("div#compose-field-1[title='Кому'][aria-label='Кому']")).Displayed);
+        this.wait.Until(driver => RecipientInputYandex.Displayed);
         randomEmail = GenerateRandomEmail();
 
         // Заполнение поля получателя и ввода письма : Яндекс 
-        recipientInputYandex.SendKeys(recipient);
-        randomEmailInputYandex.SendKeys(randomEmail);
+        RecipientInputYandex.SendKeys(recipient);
+        RandomEmailInputYandex.SendKeys(randomEmail);
     }
 
     public void SendNewEmailYandex()
     {
         // Нажатие кнопки "Отправить" : Яндекс 
-        sendButtonYandex.Click();
+        SendButtonYandex.Click();
         wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector("div#compose-field-1[title='Кому'][aria-label='Кому']")));
     }
 
     public bool IsEmailReceivedGoogle(string sender)
     {
-        this.wait.Until(driver => driver.FindElement(By.CssSelector("a[aria-label*='Входящие']")).Displayed);
+        this.wait.Until(driver => InboxEmailsGoogle.Displayed);
 
-        inboxEmailsGoogle.Click();
-        string senderName = newEmailSenderGoogle.GetAttribute("email");
-        string labelNewText = labelNewGoogle.Text;
+        InboxEmailsGoogle.Click();
+        string senderName = NewEmailSenderGoogle.GetAttribute("email");
+        string labelNewText = LabelNewGoogle.Text;
 
         // Проверка непрочитанного письма : Google
         if (senderName.Contains(sender) && labelNewText.Equals("Новое"))
         {
-            newEmailGoogle.Click();
+            NewEmailGoogle.Click();
 
             return true;
         }
@@ -77,14 +78,14 @@ public class MailboxPage
 
     public bool IsEmailCorrect()
     {
-        this.wait.Until(driver => driver.FindElement(By.CssSelector("div[aria-label='Ответить']")).Displayed);
+        this.wait.Until(driver => ReplyButtonGoogle.Displayed);
 
-        string emailText = emailContentGoogle.Text;
+        string emailText = EmailContentGoogle.Text;
 
         // Сравнение содержимого непрочитанного письма с randomEmail : Google
         if (emailText.Equals(randomEmail))
         {
-            replyButtonGoogle.Click();
+            ReplyButtonGoogle.Click();
 
             return true;
         }
@@ -94,22 +95,22 @@ public class MailboxPage
 
     public void ReadEmailAndSendResponse()
     {
-        this.wait.Until(driver => driver.FindElement(By.CssSelector("div[aria-label='Текст письма']")).Displayed);
+        this.wait.Until(driver => ResponseEmailInputGoogle.Displayed);
 
         string responseEmail = GenerateRandomEmail();
 
         // Составление и ввод ответного письма
-        responseEmailInputGoogle.SendKeys(responseEmail);
+        ResponseEmailInputGoogle.SendKeys(responseEmail);
 
         // Отправление ответного письма
-        sendButtonGoogle.Click();
+        SendButtonGoogle.Click();
     }
 
     public bool IsEmailResponsedGoogle()
     {
-        this.wait.Until(driver => driver.FindElement(By.CssSelector("div.vh > span.aT > span.bAq")).Displayed);
+        this.wait.Until(driver => EmailIsSentGoogle.Displayed);
 
-        return driver.FindElement(By.CssSelector("div.vh > span.aT > span.bAq")).Displayed;
+        return EmailIsSentGoogle.Displayed;
     }
 
     public string GenerateRandomEmail()

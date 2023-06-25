@@ -13,64 +13,66 @@ public class LoginPage
     }
 
     // Определение элементов страницы почтового ящика  : Яндекс 
-    private IWebElement usernameInputYandex => driver.FindElement(By.Id("passp-field-login"));
-    private IWebElement loginButtonYandex => driver.FindElement(By.Id("passp:sign-in"));
-    private IWebElement passwordInputYandex => driver.FindElement(By.Id("passp-field-passwd"));
+    private IWebElement UsernameInputYandex => driver.FindElement(By.Id("passp-field-login"));
+    private IWebElement LoginButtonYandex => driver.FindElement(By.Id("passp:sign-in"));
+    private IWebElement PasswordInputYandex => driver.FindElement(By.Id("passp-field-passwd"));
+    private IWebElement UserIconYandex => driver.FindElement(By.CssSelector("img.user-pic__image"));
+    private IWebElement ErrorLoginLabelYandex => driver.FindElement(By.Id("field:input-login:hint"));
 
     // Определение элементов страницы почтового ящика  : Google
-    private IWebElement usernameInputGoogle => driver.FindElement(By.Id("identifierId"));
-    private IWebElement loginButtonGoogle => driver.FindElement(By.CssSelector("div.FliLIb#identifierNext div.VfPpkd-dgl2Hf-ppHlrf-sM5MNb button.VfPpkd-LgbsSe"));
-    private IWebElement passwordInputGoogle => driver.FindElement(By.CssSelector("input[type='password']"));
-    private IWebElement nextButtonGoogle => driver.FindElement(By.CssSelector("div.FliLIb#passwordNext div.VfPpkd-dgl2Hf-ppHlrf-sM5MNb button.VfPpkd-LgbsSe"));
+    private IWebElement UsernameInputGoogle => driver.FindElement(By.Id("identifierId"));
+    private IWebElement LoginButtonGoogle => driver.FindElement(By.CssSelector("div.FliLIb#identifierNext div.VfPpkd-dgl2Hf-ppHlrf-sM5MNb button.VfPpkd-LgbsSe"));
+    private IWebElement PasswordInputGoogle => driver.FindElement(By.CssSelector("input[type='password']"));
+    private IWebElement NextButtonGoogle => driver.FindElement(By.CssSelector("div.FliLIb#passwordNext div.VfPpkd-dgl2Hf-ppHlrf-sM5MNb button.VfPpkd-LgbsSe"));
 
 
     public void LoginUserNameYandex(string username)
     {
-        this.wait.Until(driver => driver.FindElement(By.Id("passp:sign-in")).Displayed);
+        this.wait.Until(driver => LoginButtonYandex.Displayed);
 
         // Ввод логина : Яндекс 
-        usernameInputYandex.SendKeys(username);
-        loginButtonYandex.Click();
+        UsernameInputYandex.SendKeys(username);
+        LoginButtonYandex.Click();
     }
 
     public void LoginUserNameGoogle(string username)
     {
-        this.wait.Until(driver => driver.FindElement(By.Id("identifierId")).Displayed);
+        this.wait.Until(driver => UsernameInputGoogle.Displayed);
 
         // Ввод логина : Google 
-        usernameInputGoogle.SendKeys(username);
-        loginButtonGoogle.Click();
+        UsernameInputGoogle.SendKeys(username);
+        LoginButtonGoogle.Click();
     }
 
     public void LoginPasswordYandex(string password)
     {
-        this.wait.Until(driver => driver.FindElement(By.Id("passp-field-passwd")).Displayed);
+        this.wait.Until(driver => PasswordInputYandex.Displayed);
 
         // Ввод пароля : Яндекс 
-        passwordInputYandex.SendKeys(password);
-        loginButtonYandex.Click();
+        PasswordInputYandex.SendKeys(password);
+        LoginButtonYandex.Click();
     }
 
     public void LoginPasswordGoogle(string password)
     {
-        this.wait.Until(driver => driver.FindElement(By.CssSelector("input[type='password']")).Displayed);
+        this.wait.Until(driver => PasswordInputGoogle.Displayed);
 
         // Ввод пароля : Google 
-        passwordInputGoogle.SendKeys(password);
-        nextButtonGoogle.Click();
+        PasswordInputGoogle.SendKeys(password);
+        NextButtonGoogle.Click();
     }
 
     public bool IsLoginDisplayedYandex()
     {
-        this.wait.Until(driver => driver.FindElement(By.CssSelector("img.user-pic__image")).Displayed);
+        this.wait.Until(driver => UserIconYandex.Displayed);
 
-        return driver.FindElement(By.CssSelector("img.user-pic__image")).Displayed;
+        return UserIconYandex.Displayed;
     }
 
     public bool IsHintMessageDisplayedYandex()
     {
-        this.wait.Until(driver => driver.FindElement(By.Id("field:input-login:hint")).Displayed);
+        this.wait.Until(driver => ErrorLoginLabelYandex.Displayed);
 
-        return driver.FindElement(By.Id("field:input-login:hint")).Displayed;
+        return ErrorLoginLabelYandex.Displayed;
     }
 }

@@ -65,5 +65,5 @@ public class LoginPageTests
 
         //Проверка для невозможности входа входа
         Assert.IsTrue(loginPage.IsHintMessageDisplayedYandex(), "Error message must be displayed");
-    }   
+    }
 }

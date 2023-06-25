@@ -49,9 +49,9 @@ public class UserProfilePageTests
         userProfilePage.TouchAboutMeButton();
 
         // Изменение псевдонима(фамилии) пользователя
-        userProfilePage.ChangeNickname(Constants.NewLastName);
+        userProfilePage.ChangeNickname();
 
         // Проверка, что псевдоним изменился
-        Assert.IsTrue(userProfilePage.IsNicknameChanged(Constants.NewLastName), "Nickname change error.");
+        Assert.IsTrue(userProfilePage.IsNicknameChanged(), "Nickname change error.");
     }
 }
