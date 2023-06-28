@@ -2,8 +2,9 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using WebDriverTaskTests;
 using WebDriverTaskTests.Pages;
+
+namespace WebDriverTaskTests.Tests;
 
 [TestFixture]
 public class LoginPageTests
