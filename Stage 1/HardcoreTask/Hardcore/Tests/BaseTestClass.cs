@@ -3,8 +3,6 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Hardcore.Tests.Configuration;
-using System;
-using Microsoft.Extensions.Configuration;
 
 namespace Hardcore.Tests.Tests
 {
@@ -15,18 +13,6 @@ namespace Hardcore.Tests.Tests
         protected ActionBot _actionBot;
         protected DefaultWait<IWebDriver> _wait;
         protected ITakesScreenshot takesScreenshot;
-
-        private readonly IConfiguration _config;
-
-        public BaseTestClass()
-        {
-            // Инициализация конфигурации
-            var configBuilder = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-            _config = configBuilder.Build();
-        }
 
         [SetUp]
         public virtual void Setup()
@@ -40,7 +26,7 @@ namespace Hardcore.Tests.Tests
 
         protected IWebDriver GetDriver()
         {
-            BrowserType browserType = Enum.Parse<BrowserType>(_config["Browser"]);
+            BrowserType browserType = Configuration.Configuration.ReadBrowserTypeFromConfig();
             return Managers.WebDriverManager.GetWebDriver(browserType);
         }
 

@@ -24,9 +24,7 @@
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="Selenium.Support" Version="4.10.0" />
     <PackageReference Include="DotNetSeleniumExtras.PageObjects.Core" Version="4.3.0" />
-    <PackageReference Include="WebDriverManager" Version="2.16.3" />
     <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.33.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
@@ -53,9 +51,6 @@
     <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Configuration\Configuration.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Configuration\Configuration.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -65,11 +60,9 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Tests\BaseTestClass.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Configuration\Configuration.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' ">
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Configuration\Configuration.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Update="appsettings.json">
