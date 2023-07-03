@@ -27,7 +27,6 @@ public class LoginPage
     private IWebElement PasswordInputGoogle => driver.FindElement(By.CssSelector("input[type='password']"));
     private IWebElement NextButtonGoogle => driver.FindElement(By.CssSelector("div.FliLIb#passwordNext div.VfPpkd-dgl2Hf-ppHlrf-sM5MNb button.VfPpkd-LgbsSe"));
 
-
     public void LoginUserNameYandex(string username)
     {
         this.wait.Until(driver => LoginButtonYandex.Displayed);
